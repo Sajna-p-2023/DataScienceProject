@@ -1,0 +1,559 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Delay Prediction</title>
+
+    <style>
+        body {
+            background-image:url("static/ship.jpg");
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+
+</head>
+
+<body>
+    
+    <br>
+    <br>
+    <!-- As a heading -->
+    <h1 align="center" style="color:black; font-weight: bold">DELIVERY DELAY PREDICTION</h1>
+    <br>
+    <br>
+
+    <div class="container">
+
+        <form action="\predict" method="post">
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Date of Order</h5>
+                            <!-- Date,month,year -->
+                            <input style="background-color:rgb(148, 207, 233)" type="datetime-local" name="date_order" id="date_order" required="required">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer Segment</h5>
+                            <select style="background-color:rgb(148, 207, 233)" name="Customer Segment" required>
+            
+                                <option value="0">Consumer</option>
+                                <option value="1">Corporate</option>
+                                <option value="2">Home Office</option>
+                            </select><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer Country</h5>
+                            <select style="background-color:rgb(148, 207, 233)" name="Customer Country" required>
+                                <option value="0">EE. UU.</option>
+                                <option value="1">Puerto Rico</option>
+                            </select><br>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer State</h5>
+                            <select style="background-color:rgb(148, 207, 233)" name="Customer State" required>
+                                <option value="0">91732</option>
+                                <option value="1">95758</option>
+                                <option value="2">AL</option>
+                                <option value="3">AR</option>
+                                <option value="4">AZ</option>
+                                <option value="5">CA</option>
+                                <option value="6">CO</option>
+                                <option value="7">CT</option>
+                                <option value="8">DC</option>
+                                <option value="9">DE</option>
+                                <option value="10">FL</option>
+                                <option value="11">GA</option>
+                                <option value="12">HI</option>
+                                <option value="13">IA</option>
+                                <option value="14">ID</option>
+                                <option value="15">IL</option>
+                                <option value="16">IN</option>
+                                <option value="17">KS</option>
+                                <option value="18">KY</option>
+                                <option value="19">LA</option>
+                                <option value="20">MA</option>
+                                <option value="21">MD</option>
+                                <option value="22">MI</option>
+                                <option value="23">MN</option>
+                                <option value="24">MO</option>
+                                <option value="25">MT</option>
+                                <option value="26">NC</option>
+                                <option value="27">ND</option>
+                                <option value="28">NJ</option>
+                                <option value="29">NM</option>
+                                <option value="30">NV</option>
+                                <option value="31">NY</option>
+                                <option value="32">OH</option>
+                                <option value="33">OK</option>
+                                <option value="34">OR</option>
+                                <option value="35">PA</option>
+                                <option value="36">PR</option>
+                                <option value="37">RI</option>
+                                <option value="38">SC</option>
+                                <option value="39">TN</option>
+                                <option value="40">TX</option>
+                                <option value="41">UT</option>
+                                <option value="42">VA</option>
+                                <option value="43">WA</option>
+                                <option value="44">WI</option>
+                                <option value="45">WV</option>
+                            </select><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Market</h5>
+                            <select style="background-color:rgb(148, 207, 233)" name="Market" required>
+                                <option value="0">Africa</option>
+                                <option value="1">Europe</option>
+                                <option value="2">Latin America</option>
+                                <option value="3">Asia</option>
+                                <option value="4">USCA</option>
+                            </select><br> 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Department Name</h5>
+                            <select style="background-color:rgb(148, 207, 233)" name="Department Name" required>
+                                <option value="0">Apparel</option>
+                                <option value="1">Book Shop</option>
+                                <option value="2">Discs Shop</option>
+                                <option value="3">Fan Shop</option>
+                                <option value="4">Fitness</option>
+                                <option value="5">Footwear</option>
+                                <option value="6">Golf</option>
+                                <option value="7">Health and Beauty</option>
+                                <option value="8">Outdoors</option>
+                                <option value="9">Pet Shop</option>
+                                <option value="10">Technology</option> 
+                            </select><br> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card" style="background-color: rgb(208, 235, 248);">
+                        <div class="card-body">
+                            <h5 class="card-title">Category Name</h5>
+                            <select style="background-color:rgb(148, 207, 233)" name="Category Name" required>
+                                <option value="0">Accessories</option>
+                                <option value="1">As Seen on  TV!</option>
+                                <option value="2">Baby </option>
+                                <option value="3">Baseball & Softball</option>
+                                <option value="4">Basketball</option>
+                                <option value="5">Books</option>
+                                <option value="6">Boxing & MMA</option>
+                                <option value="7">CDs </option>
+                                <option value="8">Cameras </option>
+                                <option value="9">Camping & Hiking</option>
+                                <option value="10">Cardio Equipment</option>
+                                <option value="11">Children Clothing</option>
+                                <option value="12">Cleats</option>
+                                <option value="13">Computers</option>
+                                <option value="14">Consumer Electronics</option>
+                                <option value="15">Crafts</option>
+                                <option value="16">DVDs</option>
+                                <option value="17">Electronics</option>
+                                <option value="18">Fishing</option>
+                                <option value="19">Fitness Accessories</option>
+                                <option value="20">Garden</option>
+                                <option value="21">Girls Apparel</option>
+                                <option value="22">Golf Apparel</option>
+                                <option value="23">Golf Bags & Carts</option>
+                                <option value="24">Golf Balls</option>
+                                <option value="25">Golf Gloves</option>
+                                <option value="26">Golf Shoes</option>
+                                <option value="27">Health and Beauty</option>
+                                <option value="28">Hockey</option>
+                                <option value="29">Hunting & Shooting</option>
+                                <option value="30">Indoor/Outdoor Games</option>
+                                <option value="31">Kids Golf Clubs</option>
+                                <option value="32">Lacrosse</option>
+                                <option value="33">Men Clothing</option>
+                                <option value="34">Men Footwear</option>
+                                <option value="35">Men Golf Clubs</option>
+                                <option value="36">Music</option>
+                                <option value="37">Pet Supplies</option>
+                                <option value="38">Shop By Sport</option>
+                                <option value="39">Soccer</option>
+                                <option value="40">Sporting Goods</option>
+                                <option value="41">Strength Training</option>
+                                <option value="42">Tennis & Racquet</option>
+                                <option value="43">Toys</option>
+                                <option value="44">Trade-In</option>
+                                <option value="45">Video Games</option>
+                                <option value="46">Water Sports</option>
+                                <option value="47">Women Apparel</option>
+                                <option value="48">Women Clothing</option>
+                                <option value="49">Women Golf Clubs</option>
+                            </select><br>
+                     
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Item Quantity</h5>
+                                <!-- Use an input for direct entry -->
+                                <input style="background-color:rgb(148, 207, 233)" type="text" name="Order Item Quantity" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+    
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                <h5 class="card-title">Product Price</h5>
+                                <input style="background-color:rgb(148, 207, 233)" type="text" name="Product Price" required>
+                            </select><br>
+                                
+            
+            
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Region</h5>
+                                <select style="background-color:rgb(148, 207, 233)" name="Order Region" required>
+                                        <option value="0">Canada</option>
+                                        <option value="1">Caribbean</option>
+                                        <option value="2">Central Africa</option>
+                                        <option value="3">Central America</option>
+                                        <option value="4">Central Asia</option>
+                                        <option value="5">East Africa</option>
+                                        <option value="6">East of USA/option>
+                                        <option value="7">Eastern Asia</option>
+                                        <option value="8">Eastern Europe</option>
+                                        <option value="9">North Africa/option>
+                                        <option value="10">Northern Europe</option>
+                                        <option value="11">Oceania</option>
+                                        <option value="12">South America</option>
+                                        <option value="13">South Asia</option>
+                                        <option value="14">South of  USA</option>
+                                        <option value="15">Southeast Asia</option>
+                                        <option value="16">Southern Africa</option>
+                                        <option value="17">Southern Europe</option>
+                                        <option value="18">US Center</option>
+                                        <option value="19">West Africa</option>
+                                        <option value="20">West Asia</option>
+                                        <option value="21">West of USA</option>
+                                        <option value="22">Western Europe</option>
+                                    </select><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Country</h5>
+                                <select style="background-color:rgb(148, 207, 233)" name="Order Country" required>
+                                    <option value="1">Albania</option>
+                                    <option value="2">Alemania</option>
+                                    <option value="3">Angola</option>
+                                    <option value="4">Arabia Saud</option>
+                                    <option value="5">Argelia</option>
+                                    <option value="6">Argentina</option>
+                                    <option value="7">Armenia</option>
+                                    <option value="8">Australia</option>
+                                    <option value="9">Austria</option>
+                                    <option value="10">Azerbaiyn</option>
+                                    <option value="11">Banglads</option>
+                                    <option value="12">Barbados</option>
+                                    <option value="13">Barin</option>
+                                    <option value="14">Belice</option>
+                                    <option value="15">Benn</option>
+                                    <option value="16">Bielorrusia</option>
+                                    <option value="17">Blgica</option>
+                                    <option value="18">Bolivia</option>
+                                    <option value="19">Bosnia y Herzegovina</option>
+                                    <option value="20">Botsuana</option>
+                                    <option value="21">Brasil</option>
+                                    <option value="22">Bulgaria</option>
+                                    <option value="23">Burkina Faso</option>
+                                    <option value="24">Burundi</option>
+                                    <option value="25">Butn</option>
+                                    <option value="26">Camboya</option>
+                                    <option value="27">Camern</option>
+                                    <option value="28">Canada</option>
+                                    <option value="29">Chad</option>
+                                    <option value="30">Chile</option>
+                                    <option value="31">China</option>
+                                    <option value="32">Chipre</option>
+                                    <option value="33">Colombia</option>
+                                    <option value="34">Corea del Sur</option>
+                                    <option value="35">Costa Rica</option>
+                                    <option value="36">Costa de Marfil</option>
+                                    <option value="37">Croacia</option>
+                                    <option value="38">Cuba</option>
+                                    <option value="39">Dinamarca</option>
+                                    <option value="40">Ecuador</option>
+                                    <option value="41">Egipto</option>
+                                    <option value="42">El Salvador</option>
+                                    <option value="43">Emiratos rabes Unidos</option>
+                                    <option value="44">Eritrea</option>
+                                    <option value="45">Eslovaquia</option>
+                                    <option value="46">Eslovenia</option>
+                                    <option value="47">Espaa</option>
+                                    <option value="48">Estados Unidos</option>
+                                    <option value="49">Estonia</option>
+                                    <option value="50">Etiopa</option>
+                                    <option value="51">Filipinas</option>
+                                    <option value="52">Finlandia</option>
+                                    <option value="53">Francia</option>
+                                    <option value="54">Gabn</option>
+                                    <option value="55">Georgia</option>
+                                    <option value="56">Ghana</option>
+                                    <option value="57">Grecia</option>
+                                    <option value="58">Guadalupe</option>
+                                    <option value="59">Guatemala</option>
+                                    <option value="60">Guayana Francesa</option>
+                                    <option value="61">Guinea</option>
+                                    <option value="62">Guinea Ecuatorial</option>
+                                    <option value="63">Guinea-Bissau</option>
+                                    <option value="64">Guyana</option>
+                                    <option value="65">Hait</option>
+                                    <option value="66">Honduras</option>
+                                    <option value="67">Hong Kong</option>
+                                    <option value="68">Hungra</option>
+                                    <option value="69">India</option>
+                                    <option value="70">Indonesia</option>
+                                    <option value="71">Irak</option>
+                                    <option value="72">Irlanda</option>
+                                    <option value="73">Irn</option>
+                                    <option value="74">Israel</option>
+                                    <option value="75">Italia</option>
+                                    <option value="76">Jamaica</option>
+                                    <option value="77">Japan</option>
+                                    <option value="78">Jordania</option>
+                                    <option value="79">Kazajistan</option>
+                                    <option value="80">Kenia</option>
+                                    <option value="81">Kirguistn</option>
+                                    <option value="82">Kuwait</option>
+                                    <option value="83">Laos</option>
+                                    <option value="84">Lbano</option>
+                                    <option value="85">Lesoto</option>
+                                    <option value="86">Liberia</option>
+                                    <option value="87">Libia</option>
+                                    <option value="88">Lituania</option>
+                                    <option value="89">Luxemburgo</option>
+                                    <option value="90">Macedonia</option>
+                                    <option value="91">Madagascar</option>
+                                    <option value="92">Malasia</option>
+                                    <option value="93">Mali</option>
+                                    <option value="94">Marruecos</option>
+                                    <option value="95">Martinica</option>
+                                    <option value="96">Mauritania</option>
+                                    <option value="97">Moldavia</option>
+                                    <option value="98">Mongolia</option>
+                                    <option value="99">Montenegro</option>
+                                    <option value="100">Mozambique</option>
+                                    <option value="101">Mexico</option>
+                                    <option value="102">Myanmar</option>
+                                    <option value="103">Namibia</option>
+                                    <option value="104">Nepal</option>
+                                    <option value="105">Nger</option>
+                                    <option value="106">Nicaragua</option>
+                                    <option value="107">Nigeria</option>
+                                    <option value="108">Noruega</option>
+                                    <option value="109">Nueva Zelanda</option>
+                                    <option value="110">Omn</option>
+                                    <option value="111">Pakistan</option>
+                                    <option value="112">Panam</option>
+                                    <option value="113">Papa Nueva Guinea</option>
+                                    <option value="114">Paraguay</option>
+                                    <option value="115">Pases Bajos</option>
+                                    <option value="116">Peru</option>
+                                    <option value="117">Polonia</option>
+                                    <option value="118">Portugal</option>
+                                    <option value="119">Qatar</option>
+                                    <option value="120">Reino Unido</option>
+                                    <option value="121">Repblica Centroafricana</option>
+                                    <option value="122">Repblica checa</option>
+                                    <option value="123">Repblica Democrtica del Congo</option>
+                                    <option value="124">Repblica Dominicana</option>
+                                    <option value="125">Repblica de Gambia</option>
+                                    <option value="126">Repblica del Congo</option>
+                                    <option value="127">Ruanda</option>
+                                    <option value="128">Rumania</option>
+                                    <option value="129">Rusia</option>
+                                    <option value="130">Senegal</option>
+                                    <option value="131">Serbia</option>
+                                    <option value="132">Shara Occidental</option>
+                                    <option value="133">Sierra Leona</option>
+                                    <option value="134">Singapur</option>
+                                    <option value="135">Siria</option>
+                                    <option value="136">Somalia</option>
+                                    <option value="137">Sri Lanka</option>
+                                    <option value="138">Suazilandia</option>
+                                    <option value="139">SudAfrica</option>
+                                    <option value="140">Sudan</option>
+                                    <option value="141">Sudn del Sur</option>
+                                    <option value="142">Suecia</option>
+                                    <option value="143">Suiza</option>
+                                    <option value="144">Surinam</option>
+                                    <option value="145">Tailandia</option>
+                                    <option value="146">Taiwn</option>
+                                    <option value="147">Tanzania</option>
+                                    <option value="148">Tayikistn</option>
+                                    <option value="149">Tnez</option>
+                                    <option value="150">Togo</option>
+                                    <option value="151">Trinidad y Tobago</option>
+                                    <option value="152">Turkmenistn</option>
+                                    <option value="153">Turqua</option>
+                                    <option value="154">Ucrania</option>
+                                    <option value="155">Uganda</option>
+                                    <option value="156">Uruguay</option>
+                                    <option value="157">Uzbekistn</option>
+                                    <option value="158">Venezuela</option>
+                                    <option value="159">Vietnam</option>
+                                    <option value="160">Yemen</option>
+                                    <option value="161">Yibuti</option>
+                                    <option value="162">Zambia</option>
+                                    <option value="163">Zimbabue</option>  
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                <h5 class="card-title">Type of transaction</h5>
+                                <select style="background-color:rgb(148, 207, 233)" name="Type" required>
+                                    <option value="0">CASH</option>
+                                    <option value="1">DEBIT</option>
+                                    <option value="2">PAYMENT</option>
+                                    <option value="3">TRANSFER</option>
+                                </select><br>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+                <br>
+                <br>
+                <br>
+    
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                <h5 class="card-title">Type of day</h5>
+                                <select style="background-color:rgb(148, 207, 233)" name="is weekend" required>
+                                    <option value="0">Weekday</option>
+                                    <option value="1">Weekend</option>
+                                </select><br> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="card" style="background-color: rgb(208, 235, 248);">
+                            <div class="card-body">
+                                    <h5 class="card-title">Shipping Mode</h5>
+                                    <select style="background-color:rgb(148, 207, 233)" name="Shipping Mode" required>
+                                    <option value="0">First Class</option>
+                                    <option value="1">Same Day</option>
+                                    <option value="2">Second Class</option>
+                                    <option value="3">Standard Class</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+    
+                <br>
+                <br>
+                <br>
+        
+            <!-- Submit -->
+            <div style="text-align: center;">
+            <input type="submit"  value="IS THERE A DELAY IN THE DELIVERY?" class="btn btn-secondary" style="color: black ;background-color:rgb(148, 207, 233)">
+            </div>
+        </form>
+
+        <br>
+        
+        <h3 align="center" style="color:white">{{ prediction }}</h3>
+        
+        <br>
+        <br>
+
+    </div>
